@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent-soft-blue: #93c5fd;
+  --accent-soft-blue-rgb: 147 197 253;
 }
 
 @theme inline {
@@ -23,4 +25,50 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes contactReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.96);
+    filter: blur(6px);
+  }
+
+  65% {
+    transform: translateY(2px) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes contactPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgb(var(--accent-soft-blue-rgb) / 0.35);
+  }
+
+  50% {
+    transform: scale(1.18);
+    box-shadow: 0 0 0 10px rgb(var(--accent-soft-blue-rgb) / 0);
+  }
+}
+
+.contact-panel {
+  animation: contactReveal 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-status-dot {
+  animation: contactPulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-panel,
+  .contact-status-dot {
+    animation: none;
+  }
 }
