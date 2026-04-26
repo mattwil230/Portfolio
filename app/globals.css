@@ -2,73 +2,178 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --accent-soft-blue: #93c5fd;
-  --accent-soft-blue-rgb: 147 197 253;
+  --foreground: #09090b;
+  --accent-blue: #2563eb;
+  --accent-blue-rgb: 37 99 235;
+  --font-sans-stack:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Segoe UI",
+    sans-serif;
+  --font-mono-stack:
+    "SFMono-Regular",
+    "SF Mono",
+    "JetBrains Mono",
+    "Menlo",
+    monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans-stack);
+  --font-mono: var(--font-mono-stack);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
 }
 
 body {
+  min-height: 100%;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans-stack);
 }
 
-@keyframes contactReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(-14px) scale(0.96);
-    filter: blur(6px);
-  }
-
-  65% {
-    transform: translateY(2px) scale(1.01);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
+::selection {
+  background: rgb(var(--accent-blue-rgb) / 0.14);
+  color: var(--foreground);
 }
 
-@keyframes contactPulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgb(var(--accent-soft-blue-rgb) / 0.35);
-  }
-
-  50% {
-    transform: scale(1.18);
-    box-shadow: 0 0 0 10px rgb(var(--accent-soft-blue-rgb) / 0);
-  }
+.portfolio-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      rgb(24 24 27 / 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgb(24 24 27 / 0.05) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+  transform: translate3d(0, calc(var(--hero-parallax-offset) * -0.18), 0);
 }
 
-.contact-panel {
-  animation: contactReveal 480ms cubic-bezier(0.22, 1, 0.36, 1);
+.portfolio-grid-frame {
+  border: 1px solid rgb(var(--accent-blue-rgb) / 0.08);
+  transform: translate3d(-50%, calc(var(--hero-parallax-offset) * 0.28), 0);
 }
 
-.contact-status-dot {
-  animation: contactPulse 2.4s ease-in-out infinite;
+.portfolio-grid-line {
+  background: rgb(var(--accent-blue-rgb) / 0.12);
+  transform: translate3d(-50%, calc(var(--hero-parallax-offset) * 0.12), 0);
+}
+
+.hero-plane {
+  position: absolute;
+  width: clamp(2.4rem, 3.6vw, 3.6rem);
+  height: clamp(2.4rem, 3.6vw, 3.6rem);
+  opacity: 0.9;
+  will-change: left, top, transform;
+  transform-origin: center;
+}
+
+.hero-plane svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+.hero-plane-a {
+  color: rgb(239 68 68 / 0.92);
+}
+
+.hero-plane-b {
+  color: rgb(220 38 38 / 0.9);
+}
+
+.hero-plane-c {
+  color: rgb(248 113 113 / 0.88);
+}
+
+.hero-plane-d {
+  color: rgb(185 28 28 / 0.88);
+}
+
+.hero-runway {
+  width: min(30rem, 52vw);
+  height: 0.9rem;
+  border: 1px solid rgb(24 24 27 / 0.14);
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      to right,
+      rgb(255 255 255 / 0.32),
+      rgb(255 255 255 / 0.06) 18%,
+      rgb(24 24 27 / 0.1) 50%,
+      rgb(255 255 255 / 0.06) 82%,
+      rgb(255 255 255 / 0.32)
+    );
+  opacity: 0.7;
+}
+
+.hero-runway-centerline {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgb(255 255 255 / 0.7) 0 12px,
+      transparent 12px 24px
+    );
+}
+
+.hero-runway-mark {
+  position: absolute;
+  top: 50%;
+  width: 0.36rem;
+  height: 0.36rem;
+  border-radius: 999px;
+  background: rgb(239 68 68 / 0.55);
+  transform: translate(-50%, -50%);
+}
+
+.hero-runway-mark-a {
+  left: 18%;
+}
+
+.hero-runway-mark-b {
+  left: 38%;
+}
+
+.hero-runway-mark-c {
+  left: 58%;
+}
+
+.hero-runway-mark-d {
+  left: 78%;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-panel,
-  .contact-status-dot {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .portfolio-grid,
+  .portfolio-grid-frame,
+  .portfolio-grid-line {
+    transform: none;
+  }
+
+  .hero-plane {
     animation: none;
+    opacity: 0;
   }
 }
