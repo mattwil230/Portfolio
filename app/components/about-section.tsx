@@ -22,10 +22,10 @@ export default function AboutSection({
   focusAreas,
 }: AboutSectionProps) {
   return (
-    <section id="about" className="border-b border-zinc-100">
-      <div className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+    <section id="about" className="border-b border-zinc-100 dark:border-slate-800">
+      <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 sm:pb-24 sm:pt-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-          <FadeInSection>
+          <FadeInSection className="lg:pt-2">
             <SectionHeading
               eyebrow={eyebrow}
               title={title}
@@ -33,7 +33,10 @@ export default function AboutSection({
             />
           </FadeInSection>
 
-          <FadeInSection delay={80} className="space-y-5 text-base leading-7 text-zinc-600">
+          <FadeInSection
+            delay={80}
+            className="space-y-5 text-base leading-7 text-zinc-600 dark:text-slate-400 lg:pt-16"
+          >
             {paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -43,12 +46,12 @@ export default function AboutSection({
         <div className="mt-12 grid gap-3 sm:grid-cols-3">
           {focusAreas.map((area, index) => (
             <FadeInSection key={area.label} delay={index * 80}>
-              <div className="rounded-[24px] border border-zinc-200 p-5">
-                <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-blue-700">
+              <div className="rounded-[24px] border border-zinc-200 p-5 dark:border-slate-800 dark:bg-slate-900">
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-blue-700 dark:text-sky-300">
                   {area.label}
                 </p>
 
-                <p className="mt-3 text-sm leading-6 text-zinc-600">
+                <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-slate-400">
                   {area.value}
                 </p>
               </div>

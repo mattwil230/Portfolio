@@ -1,10 +1,16 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #09090b;
   --accent-blue: #2563eb;
   --accent-blue-rgb: 37 99 235;
+  --grid-rgb: 24 24 27;
+  --runway-border-rgb: 24 24 27;
+  --runway-dark-rgb: 24 24 27;
+  --runway-light-rgb: 255 255 255;
+  --runway-mark-rgb: 239 68 68;
   --font-sans-stack:
     -apple-system,
     BlinkMacSystemFont,
@@ -29,6 +35,7 @@
 html {
   background: var(--background);
   color: var(--foreground);
+  color-scheme: light;
   scroll-behavior: smooth;
 }
 
@@ -37,6 +44,22 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans-stack);
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+html.dark {
+  --background: #090d18;
+  --foreground: #edf2f7;
+  --accent-blue: #7dd3fc;
+  --accent-blue-rgb: 125 211 252;
+  --grid-rgb: 148 163 184;
+  --runway-border-rgb: 148 163 184;
+  --runway-dark-rgb: 148 163 184;
+  --runway-light-rgb: 255 255 255;
+  --runway-mark-rgb: 251 146 60;
+  color-scheme: dark;
 }
 
 ::selection {
@@ -48,12 +71,12 @@ body {
   background-image:
     linear-gradient(
       to right,
-      rgb(24 24 27 / 0.05) 1px,
+      rgb(var(--grid-rgb) / 0.08) 1px,
       transparent 1px
     ),
     linear-gradient(
       to bottom,
-      rgb(24 24 27 / 0.05) 1px,
+      rgb(var(--grid-rgb) / 0.08) 1px,
       transparent 1px
     );
   background-size: 48px 48px;
@@ -106,16 +129,16 @@ body {
 .hero-runway {
   width: min(30rem, 52vw);
   height: 0.9rem;
-  border: 1px solid rgb(24 24 27 / 0.14);
+  border: 1px solid rgb(var(--runway-border-rgb) / 0.2);
   border-radius: 999px;
   background:
     linear-gradient(
       to right,
-      rgb(255 255 255 / 0.32),
-      rgb(255 255 255 / 0.06) 18%,
-      rgb(24 24 27 / 0.1) 50%,
-      rgb(255 255 255 / 0.06) 82%,
-      rgb(255 255 255 / 0.32)
+      rgb(var(--runway-light-rgb) / 0.24),
+      rgb(var(--runway-light-rgb) / 0.05) 18%,
+      rgb(var(--runway-dark-rgb) / 0.12) 50%,
+      rgb(var(--runway-light-rgb) / 0.05) 82%,
+      rgb(var(--runway-light-rgb) / 0.24)
     );
   opacity: 0.7;
 }
@@ -130,7 +153,7 @@ body {
   background:
     repeating-linear-gradient(
       to right,
-      rgb(255 255 255 / 0.7) 0 12px,
+      rgb(var(--runway-light-rgb) / 0.7) 0 12px,
       transparent 12px 24px
     );
 }
@@ -141,7 +164,7 @@ body {
   width: 0.36rem;
   height: 0.36rem;
   border-radius: 999px;
-  background: rgb(239 68 68 / 0.55);
+  background: rgb(var(--runway-mark-rgb) / 0.55);
   transform: translate(-50%, -50%);
 }
 

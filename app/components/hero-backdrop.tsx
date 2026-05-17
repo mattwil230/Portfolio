@@ -47,8 +47,6 @@ export default function HeroBackdrop() {
       className="pointer-events-none absolute inset-0 overflow-hidden [--hero-parallax-offset:0px]"
     >
       <div className="portfolio-grid absolute inset-0" />
-      <div className="portfolio-grid-frame absolute left-1/2 top-28 h-[24rem] w-[min(82vw,52rem)] rounded-[32px]" />
-      <div className="portfolio-grid-line absolute left-1/2 top-0 h-full w-px" />
     </div>
   );
 }

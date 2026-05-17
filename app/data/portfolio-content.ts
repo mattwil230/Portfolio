@@ -3,7 +3,7 @@ export type NavigationLink = {
   label: string;
 };
 
-export type ProjectStatus = "Live" | "In Progress";
+export type ProjectStatus = "Live" | "In Progress" | "Internal";
 
 export type Project = {
   title: string;
@@ -11,6 +11,7 @@ export type Project = {
   detail: string;
   status: ProjectStatus;
   technologies: string[];
+  href?: string;
 };
 
 export type ExperienceEntry = {
@@ -28,6 +29,7 @@ export type LinkItem = {
 
 export const navigationLinks: NavigationLink[] = [
   { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
@@ -55,7 +57,7 @@ export const heroContent = {
       external: true,
     },
     {
-      href: "/matt-williams-resume.pdf",
+      href: "/Matt_Williams_Engineer_Resume.pdf",
       label: "Resume",
       external: true,
     },
@@ -64,6 +66,16 @@ export const heroContent = {
 
 export const projects: Project[] = [
   {
+    title: "Unclone.io",
+    summary:
+      "Brand protection company focused on identifying cloned websites and driving remediation.",
+    detail:
+      "Built a product around detecting impersonation sites, helping businesses surface fraudulent clones quickly and take them down before they cause brand or customer harm.",
+    status: "Live",
+    technologies: ["Brand Protection", "Fraud Detection", "Web Monitoring"],
+    href: "https://unclone.io",
+  },
+  {
     title: "Builda",
     summary:
       "Fusion 360 add-in that turns natural language into parametric CAD geometry.",
@@ -71,6 +83,7 @@ export const projects: Project[] = [
       "Fine-tuned multiple LoRA-based models, built schema-constrained inference, and added human feedback workflows to benchmark output quality.",
     status: "In Progress",
     technologies: ["PyTorch", "LoRA", "Unsloth"],
+    href: "https://builda-sigma.vercel.app/",
   },
   {
     title: "QueryMango",
@@ -78,28 +91,30 @@ export const projects: Project[] = [
       "Database monitoring tool that tracks freshness across 10+ tables and catches pipeline failures early.",
     detail:
       "Built during my AI engineering internship to surface real-time freshness issues and resolve dataset inconsistencies inside Snowflake-backed pipelines.",
-    status: "Live",
+    status: "Internal",
     technologies: ["Snowflake", "Monitoring", "Alerting"],
-  },
-  {
-    title: "Credential Recovery Ranking",
-    summary:
-      "ML-guided recovery system that improved successful credential recovery from 30% to 35% on 130M+ rows.",
-    detail:
-      "Combined large-scale preprocessing, PyTorch ranking models, and Hashcat prioritization to focus only on the highest-probability guesses.",
-    status: "Live",
-    technologies: ["Hashcat", "PyTorch", "Data Pipelines"],
   },
 ];
 
 export const experienceContent = {
   eyebrow: "Experience",
-  title: "Shipping applied ML in environments where the details matter.",
+  title: "Building production systems where AI, security, and product meet.",
   description:
     "Most of my work sits across machine learning, data systems, and full-stack product development, with a bias for useful systems that hold up in production.",
 };
 
 export const experienceEntries: ExperienceEntry[] = [
+  {
+    company: "Unclone.io",
+    role: "Founder",
+    period: "Jan 2026 — Present",
+    summary:
+      "Lead marketing, outbound outreach, and go-to-market strategy for an early-stage AI security product that detects clone and phishing sites impersonating legitimate brands.",
+    highlights: [
+      "Defined product requirements and customer workflows across clone-site detection, threat verification, remediation, and evidence collection.",
+      "Built a human-in-the-loop remediation agent that prepares abuse reports for site takedown workflows.",
+    ],
+  },
   {
     company: "Crypto Asset Recovery",
     role: "AI Machine Learning Engineer",
@@ -137,12 +152,13 @@ export const experienceEntries: ExperienceEntry[] = [
 
 export const aboutContent = {
   eyebrow: "About",
-  title: "I build machine learning systems and full-stack products with a bias for shipping.",
+  title:
+    "I build machine learning systems and full-stack products with a focus on turning technical ideas into usable products.",
   description:
-    "The work I care about most sits where models, infrastructure, and product all have to work together under real constraints.",
+    "My work sits at the intersection of AI, infrastructure, and product — turning models, data, and backend systems into tools people can actually use.",
   paragraphs: [
-    "I'm currently working as an ML engineer, and my background spans mathematics, mechanical engineering, and applied product work.",
-    "Most of what I build lives between machine learning and full-stack software: training or evaluating models, shaping the frontend around the system, and building the infrastructure that keeps the product reliable once people actually use it.",
+    "I’m currently an ML Engineer and founder building products across applied AI, fraud detection, and developer tooling. My background spans mathematics, mechanical engineering, machine learning, and full-stack software, which gives me a practical approach to building systems from model development through deployment and user experience.",
+    "Most of what I build involves training or evaluating models, designing reliable backend workflows, and creating clear interfaces around complex technical systems.",
   ],
   focusAreas: [
     {
@@ -164,11 +180,11 @@ export const contactContent = {
   eyebrow: "Contact",
   title: "Open to ML and full-stack product work that needs both systems thinking and execution.",
   description:
-    "Best way to reach me is by email. You can also view the current resume PDF, GitHub, and LinkedIn from here.",
+    "The best way to reach me is to send me an email. You can also see my resume, GitHub, and LinkedIn here.",
   email: "mattwil230@gmail.com",
   links: [
     {
-      href: "/matt-williams-resume.pdf",
+      href: "/Matt_Williams_Engineer_Resume.pdf",
       label: "Resume",
     },
     {
@@ -177,7 +193,7 @@ export const contactContent = {
     },
     {
       href: "https://www.linkedin.com/in/mattwilliams77/",
-      label: "LinkedIn / mattwilliams77",
+      label: "LinkedIn",
     },
   ] satisfies LinkItem[],
 };

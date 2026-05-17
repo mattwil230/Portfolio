@@ -16,7 +16,10 @@ import {
 
 export default function Home() {
   return (
-    <main id="top" className="min-h-screen bg-white text-zinc-950">
+    <main
+      id="top"
+      className="min-h-screen bg-white text-zinc-950 transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100"
+    >
       <SiteNav name={heroContent.name} links={navigationLinks} />
       <Hero
         eyebrow={heroContent.eyebrow}

@@ -9,7 +9,7 @@ type ProjectsSectionProps = {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="border-b border-zinc-100">
+    <section id="projects" className="border-b border-zinc-100 dark:border-slate-800">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
         <FadeInSection>
           <SectionHeading
