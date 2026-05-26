@@ -12,6 +12,12 @@ const statusDotClass: Record<Project["status"], string> = {
 };
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const projectLinks =
+    project.links ??
+    (project.href
+      ? [{ href: project.href, label: project.hrefLabel ?? "Visit site" }]
+      : []);
+
   return (
     <article className="flex h-full flex-col rounded-[28px] border border-zinc-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_20px_50px_-30px_rgba(15,23,42,0.18)] dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-600 dark:hover:shadow-[0_24px_60px_-34px_rgba(2,12,27,0.68)]">
       <div className="flex items-start justify-between gap-4">
@@ -50,15 +56,20 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        {project.href ? (
-          <Link
-            href={project.href}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-auto inline-flex items-center pt-4 text-sm font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition hover:decoration-zinc-900 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-200"
-          >
-            Visit site
-          </Link>
+        {projectLinks.length > 0 ? (
+          <div className="mt-auto flex flex-wrap gap-x-5 gap-y-2 pt-4">
+            {projectLinks.map((link) => (
+              <Link
+                key={`${project.title}-${link.href}`}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center text-sm font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition hover:decoration-zinc-900 dark:text-slate-100 dark:decoration-slate-600 dark:hover:decoration-slate-200"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         ) : null}
       </div>
     </article>

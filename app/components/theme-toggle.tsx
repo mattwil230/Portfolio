@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
@@ -10,24 +10,23 @@ function applyTheme(theme: Theme) {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (
-      typeof document !== "undefined" &&
-      document.documentElement.classList.contains("dark")
-    ) {
-      return "dark";
-    }
+  const [theme, setTheme] = useState<Theme>("light");
+  const [mounted, setMounted] = useState(false);
 
-    return "light";
-  });
+  useEffect(() => {
+    setTheme(
+      document.documentElement.classList.contains("dark") ? "dark" : "light"
+    );
+    setMounted(true);
+  }, []);
 
   const nextTheme = theme === "dark" ? "light" : "dark";
 
   return (
     <button
       type="button"
-      aria-label={`Switch to ${nextTheme} mode`}
-      aria-pressed={theme === "dark"}
+      aria-label={mounted ? `Switch to ${nextTheme} mode` : "Toggle theme"}
+      aria-pressed={mounted ? theme === "dark" : undefined}
       onClick={() => {
         const updatedTheme = theme === "dark" ? "light" : "dark";
         setTheme(updatedTheme);
@@ -40,7 +39,9 @@ export default function ThemeToggle() {
           viewBox="0 0 20 20"
           aria-hidden="true"
           className={`absolute h-4 w-4 transition-all duration-200 ${
-            theme === "dark" ? "scale-0 opacity-0" : "scale-100 opacity-100"
+            mounted && theme === "dark"
+              ? "scale-0 opacity-0"
+              : "scale-100 opacity-100"
           }`}
         >
           <path
@@ -57,7 +58,9 @@ export default function ThemeToggle() {
           viewBox="0 0 20 20"
           aria-hidden="true"
           className={`absolute h-4 w-4 transition-all duration-200 ${
-            theme === "dark" ? "scale-100 opacity-100" : "scale-0 opacity-0"
+            mounted && theme === "dark"
+              ? "scale-100 opacity-100"
+              : "scale-0 opacity-0"
           }`}
         >
           <path
@@ -67,9 +70,7 @@ export default function ThemeToggle() {
         </svg>
       </span>
 
-      <span suppressHydrationWarning>
-        {theme === "dark" ? "Dark" : "Light"}
-      </span>
+      <span>{mounted ? (theme === "dark" ? "Dark" : "Light") : "Theme"}</span>
     </button>
   );
 }

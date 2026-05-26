@@ -12,6 +12,8 @@ export type Project = {
   status: ProjectStatus;
   technologies: string[];
   href?: string;
+  hrefLabel?: string;
+  links?: LinkItem[];
 };
 
 export type ExperienceEntry = {
@@ -83,7 +85,18 @@ export const projects: Project[] = [
       "Fine-tuned multiple LoRA-based models, built schema-constrained inference, and added human feedback workflows to benchmark output quality.",
     status: "In Progress",
     technologies: ["PyTorch", "LoRA", "Unsloth"],
-    href: "https://builda-sigma.vercel.app/",
+    href: "https://www.loom.com/share/333651cbf499422a96b998036b3cb5f0",
+    hrefLabel: "Watch demo",
+    links: [
+      {
+        href: "https://www.loom.com/share/333651cbf499422a96b998036b3cb5f0",
+        label: "Watch demo",
+      },
+      {
+        href: "https://builda-sigma.vercel.app/",
+        label: "Visit site",
+      },
+    ],
   },
   {
     title: "QueryMango",
