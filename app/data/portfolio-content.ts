@@ -118,25 +118,27 @@ export const experienceContent = {
 
 export const experienceEntries: ExperienceEntry[] = [
   {
-    company: "Unclone.io",
-    role: "Founder",
-    period: "Jan 2026 — Present",
+    company: "NoInfra",
+    role: "Founding Full-Stack Engineer",
+    period: "March 2026 — Present",
     summary:
-      "Lead marketing, outbound outreach, and go-to-market strategy for an early-stage AI security product that detects clone and phishing sites impersonating legitimate brands.",
+      "Founding engineer at a pre-seed startup, building core agent infrastructure spanning persistent memory, model routing, and go-to-market automation.",
     highlights: [
-      "Defined product requirements and customer workflows across clone-site detection, threat verification, remediation, and evidence collection.",
-      "Built a human-in-the-loop remediation agent that prepares abuse reports for site takedown workflows.",
+      "Engineered a persistent memory system for AI agents that ingests session data, converts interactions into structured observations, and retrieves user-specific context through an isolated knowledge layer.",
+      "Designed an OpenAI-compatible inference layer that unifies multiple model providers, supports streaming responses, and routes requests across hosted LLM endpoints for multiple agent applications.",
+      "Led development of internal marketing and go-to-market automation systems that analyzed search demand, ranked keywords, generated campaign assets, and supported autonomous customer-acquisition workflows.",
     ],
   },
   {
     company: "Crypto Asset Recovery",
-    role: "AI Machine Learning Engineer",
-    period: "Feb 2026 — Present",
+    role: "Full-Stack Engineer",
+    period: "Dec 2025 — Present",
     summary:
-      "Built ranking models and large-scale preprocessing pipelines for credential recovery workflows operating on 130M+ rows.",
+      "Full-stack engineer building Unclone.io, CAR's AI-powered clone-site detection platform, alongside ML evaluation workflows for credential recovery.",
     highlights: [
-      "Improved recovery success from 30% to 35% with optimized attack strategies.",
-      "Trained PyTorch models on 10M+ cleaned samples, beating baseline top-N accuracy by roughly 12–18%.",
+      "Developed backend systems for Unclone's AI-powered clone-site detection platform using Python, Django, Celery, PostgreSQL, and Docker, supporting signal ingestion, enrichment, similarity scoring, and domain verification workflows.",
+      "Built a human-in-the-loop remediation agent that generates provider-specific abuse reports and evidence bundles while enforcing review and approval before external submission.",
+      "Engineered full-stack ML evaluation workflows using Python, Django/FastAPI, PostgreSQL, Pandas, NumPy, and PyTorch, helping improve recovery success from 30% to 35% across a 130M+ row dataset.",
     ],
   },
   {
